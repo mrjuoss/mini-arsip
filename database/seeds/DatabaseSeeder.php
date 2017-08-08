@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DokumensTableSeeder::class);
         $this->call(OwnersTableSeeder::class);
         $this->call(StopmapsTableSeeder::class);
+        $this->call(DetailsTableSeeder::class);
     }
 }
