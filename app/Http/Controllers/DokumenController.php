@@ -13,7 +13,8 @@ class DokumenController extends Controller
      */
     public function index()
     {
-        //
+        $dokumens = \App\Dokumen::all();
+        return view('dokumens.index', compact('dokumens'));
     }
 
     /**
