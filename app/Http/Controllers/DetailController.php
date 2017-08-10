@@ -11,12 +11,25 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      // \DB::enableQueryLog();
+
       $owners = \App\Owner::all();
       $dokumens = \App\Dokumen::all();
-      $details = \App\Detail::with('owner', 'dokumen', 'stopmap')->paginate(3);
+
+      if ($owner_id = ($request->get('owner_id')))
+      {
+        $details = \App\Detail::where('owner_id', $owner_id)
+                                ->with('owner', 'dokumen', 'stopmap')
+                                ->paginate(3);
+      }
+      else
+      {
+        $details = \App\Detail::with('owner', 'dokumen', 'stopmap')
+                                ->paginate(3);
+      }
+      // \DB::enableQueryLog();
+
       return view('details.index', compact('dokumens', 'owners', 'details'));
       // $data = view('template.main', compact('dokumens', 'owners', 'details'))->render();
       // dd(\DB::getQueryLog($data));

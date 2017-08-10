@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>My Contact</title>
+    <title>Mini Arsip</title>
 
     <!-- Bootstrap -->
     <link href="/template/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +31,7 @@
           </button>
 
           <a class="navbar-brand text-uppercase" href="#">
-            My contact
+            Mini Arsip
           </a>
         </div>
         <!-- /.navbar-header -->
@@ -40,27 +39,30 @@
           <div class="nav navbar-right navbar-btn">
             <a href="form.html" class="btn btn-default">
               <i class="glyphicon glyphicon-plus"></i>
-              Add Contact
+              Add Arsip
             </a>
           </div>
         </div>
       </div>
     </nav>
-
     <!-- content -->
     <div class="container">
       <div class="row">
         <div class="col-md-3">
           <div class="list-group">
-            <a href="#" class="list-group-item active">All Contact <span class="badge">10</span></a>
-            <a href="" class="list-group-item">Family <span class="badge">4</span></a>
-            <a href="" class="list-group-item">Friends <span class="badge">3</span></a>
-            <a href="" class="list-group-item">Other <span class="badge">3</span></a>
+
+              <?php $selected_owner = Request::get('owner_id') ?>
+
+              <a href="{{ route('detail.index') }}" class="list-group-item {{ empty($selected_owner) ? 'active' : '' }}">All Owner <span class="badge">{{ \App\Detail::count() }}</span></a>
+
+              @foreach ( App\Owner::all() as $owner)
+                <a href="{{ route('detail.index', ['owner_id' => $owner->id ]) }}" class="list-group-item {{ $selected_owner == $owner->id ? 'active' : ''}}"> {{$owner->name}} <span class="badge"> {{ $owner->details->count() }}</span></a>
+              @endforeach
           </div>
         </div><!-- /.col-md-3 -->
 
         <div class="col-md-9">
-          @yield('content')        
+          @yield('content')
         </div>
       </div>
     </div>

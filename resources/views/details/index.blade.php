@@ -42,7 +42,9 @@
 </div>
 
 <div class="text-center">
-{!! $details->links() !!}
+  <nav>
+    {!! $details->appends( Request::query())->render() !!}
+  </nav>
 </div>
 
 @endsection()
