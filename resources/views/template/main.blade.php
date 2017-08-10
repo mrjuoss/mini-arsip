@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Mini Arsip with Laravel</title>
+    <title>My Contact</title>
 
     <!-- Bootstrap -->
     <link href="/template/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +32,7 @@
           </button>
 
           <a class="navbar-brand text-uppercase" href="#">
-            Mini Arsip
+            My contact
           </a>
         </div>
         <!-- /.navbar-header -->
@@ -39,7 +40,7 @@
           <div class="nav navbar-right navbar-btn">
             <a href="form.html" class="btn btn-default">
               <i class="glyphicon glyphicon-plus"></i>
-              Add Arsip
+              Add Contact
             </a>
           </div>
         </div>
@@ -48,7 +49,20 @@
 
     <!-- content -->
     <div class="container">
-      @yield('content')
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">All Contact <span class="badge">10</span></a>
+            <a href="" class="list-group-item">Family <span class="badge">4</span></a>
+            <a href="" class="list-group-item">Friends <span class="badge">3</span></a>
+            <a href="" class="list-group-item">Other <span class="badge">3</span></a>
+          </div>
+        </div><!-- /.col-md-3 -->
+
+        <div class="col-md-9">
+          @yield('content')        
+        </div>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
