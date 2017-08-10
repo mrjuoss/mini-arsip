@@ -20,7 +20,7 @@ class DetailsTableSeeder extends Seeder
         $details = [];
         $faker   = Faker::create();
 
-        for($i=1; $i <= 50; $i++)
+        for($i=1; $i <= 20; $i++)
         {
           $details[] = [
             'no_dokumen' => $faker->buildingNumber."-".$faker->postcode."-200".rand(4,7),
@@ -30,8 +30,7 @@ class DetailsTableSeeder extends Seeder
             'stopmap_id' => rand(1, 4),
             'user_id' => rand(1, 2)
           ];
-
-          DB::table('details')->insert($details);
         }
+        DB::table('details')->insert($details);
     }
 }

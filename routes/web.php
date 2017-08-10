@@ -19,4 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('/detail', 'DetailController');
+
 Route::get('/dokumen', 'DokumenController@index');
+
+Route::get('/admin', 'DokumenController@owner');

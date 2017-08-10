@@ -13,7 +13,13 @@ class DetailController extends Controller
      */
     public function index()
     {
-        //
+      // \DB::enableQueryLog();
+      $owners = \App\Owner::all();
+      $dokumens = \App\Dokumen::all();
+      $details = \App\Detail::with('owner', 'dokumen', 'stopmap')->paginate(3);
+      return view('details.index', compact('dokumens', 'owners', 'details'));
+      // $data = view('template.main', compact('dokumens', 'owners', 'details'))->render();
+      // dd(\DB::getQueryLog($data));
     }
 
     /**

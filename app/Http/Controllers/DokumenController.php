@@ -14,7 +14,20 @@ class DokumenController extends Controller
     public function index()
     {
         $dokumens = \App\Dokumen::all();
-        return view('dokumens.index', compact('dokumens'));
+        $owners = \App\Owner::all();
+        return view('dokumens.index', compact('dokumens', 'owners'));
+    }
+
+    public function owner()
+    {
+        // \DB::enableQueryLog();
+        $owners = \App\Owner::all();
+        $dokumens = \App\Dokumen::all();
+        $details = \App\Detail::with('owner', 'dokumen', 'stopmap')->paginate(3);
+        return view('template.main', compact('dokumens', 'owners', 'details'));
+        // $data = view('template.main', compact('dokumens', 'owners', 'details'))->render();
+        // dd(\DB::getQueryLog($data));
+
     }
 
     /**
